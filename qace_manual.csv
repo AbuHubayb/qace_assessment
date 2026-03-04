@@ -1,0 +1,38 @@
+,Passed,0.00%,,Failed,0.00%,Not Tested,100.00%,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,Test Case ID,Feature,Test Scenario,Preconditions,Test Steps,Test Data,Priority,Type,Expected Result,Actual Result
+,TC_LOGIN_001,Login,Login with valid standard user,User on login page,"1. Enter username
+2. Enter password
+3. Click Login",standard_user / secret_sauce,High,Positive,User redirected to inventory page,Not Tested
+,TC_LOGIN_002,,Login with locked out user,User on login page,Enter locked_out_user + valid password,locked_out_user / secret_sauce,High,Negative,Error message displayed: user locked out,Not Tested
+,TC_LOGIN_003,,Invalid password,User on login page,Enter valid username + wrong password,standard_user / wrong_pass,High,Negative,Error message displayed,Not Tested
+,TC_LOGIN_004,,Empty username,User on login page,"Leave username blank, enter password",(blank) / secret_sauce,High,Negative,Error message displayed,Not Tested
+,TC_LOGIN_005,,Empty password,User on login page,"Enter username, leave password blank",standard_user / (blank),High,Negative,Error message displayed,Not Tested
+,TC_LOGIN_006,,Both fields empty,User on login page,Click login without entering credentials,(blank),High,Negative,Error message displayed,Not Tested
+,TC_LOGIN_007,,Username case sensitivity,User on login page,Enter STANDARD_USER,STANDARD_USER / secret_sauce,Medium,Edge,Login fails,Not Tested
+,TC_LOGIN_008,,Password masking,User on login page,Type password,secret_sauce,Low,UI,Password masked with dots,Not Tested
+,TC_LOGIN_009,,Access inventory without login,Browser open,Navigate directly to /inventory.html,N/A,High,Security,Redirected to login page,Not Tested
+,TC_CART_001,Add to Cart,Add single product,Logged in as standard_user,Click “Add to Cart” on any product,Backpack,High,Positive,Cart badge shows 1,Not Tested
+,TC_CART_002,,Add multiple products,Logged in,Add 3 different products,Any 3 products,High,Positive,Cart badge shows 3,Not Tested
+,TC_CART_003,,Add all products,Logged in,Click add on all products,All products,Medium,Positive,Cart count matches total products,Not Tested
+,TC_CART_004,,Button changes to Remove,Logged in,Click Add to Cart,Any product,Medium,UI,Button changes to “Remove”,Not Tested
+,TC_CART_005,,Rapid multiple clicks,Logged in,Double click add button quickly,Any product,Medium,Edge,Product added once only,Not Tested
+,TC_CART_006,,Add same product twice,Logged in,Click add again after already added,Same product,High,Negative,No duplicate entry,Not Tested
+,TC_CART_007,,Cart persists after refresh,Logged in,Add item → Refresh page,Any product,High,Edge,Item remains in cart,Not Tested
+,TC_REMOVE_001,Remove,Remove single product,Product already in cart,Click Remove,Any product,High,Positive,"Product removed, count decreases",Not Tested
+,TC_REMOVE_002,,Remove from cart page,Product in cart,Go to cart → Click Remove,Any product,High,Positive,Item removed from cart,Not Tested
+,TC_REMOVE_003,,Remove all products,Multiple products added,Remove one by one,Multiple items,Medium,Edge,Cart badge disappears,Not Tested
+,TC_REMOVE_004,,Remove after refresh,Product added,Refresh → Remove,Any product,Medium,Edge,Product removed successfully,Not Tested
+,TC_REMOVE_005,,Remove during checkout,Product added,Start checkout → Cancel → Remove item,Any product,Medium,Edge,Item removed,Not Tested
+,TC_CHECKOUT_001,Checkout,Complete checkout with single item,Item in cart,Go to cart → Checkout → Fill details → Finish,Valid details,High,Positive,Order success message displayed,Not Tested
+,TC_CHECKOUT_002,,Complete checkout with multiple items,Multiple items added,Complete checkout steps,Valid details,High,Positive,Order completed successfully,Not Tested
+,TC_CHECKOUT_003,,Empty first name,Item in cart,Leave First Name blank,Blank First Name,High,Negative,Error message displayed,Not Tested
+,TC_CHECKOUT_004,,Empty last name,Item in cart,Leave Last Name blank,Blank Last Name,High,Negative,Error message displayed,Not Tested
+,TC_CHECKOUT_005,,Empty postal code,Item in cart,Leave Postal Code blank,Blank Postal Code,High,Negative,Error message displayed,Not Tested
+,TC_CHECKOUT_006,,All fields empty,Item in cart,Click continue without filling form,All blank,High,Negative,Validation error displayed,Not Tested
+,TC_CHECKOUT_007,,Verify total calculation,Items in cart,Go to overview page,Multiple items,High,Functional,Item total + tax = final total,Not Tested
+,TC_CHECKOUT_008,,Access checkout URL directly,Not logged in,Enter checkout URL,N/A,High,Security,Redirected to login page,Not Tested
+,TC_CHECKOUT_009,,Double click Finish,On overview page,Double click Finish,Valid details,Medium,Edge,Order processed once only,Not Tested
+,TC_CHECKOUT_010,,Cancel checkout,On checkout page,Click Cancel,N/A,Medium,Positive,Redirect to inventory page,Not Tested
